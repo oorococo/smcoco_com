@@ -1,0 +1,1 @@
+{"version":3,"sources":["a.js"],"names":[],"mappings":";;;;;;kBAAe,YAAM;AACjB,YAAQ,GAAR,CAAY,MAAZ;AACH,C","file":"a-compiled.js","sourcesContent":["export default () => {\n    console.log(444444)\n}\n"]}
