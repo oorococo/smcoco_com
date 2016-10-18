@@ -89,7 +89,7 @@
 /******/ 	};
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 205);
+/******/ 	return __webpack_require__(__webpack_require__.s = 206);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -8442,6 +8442,10 @@ var _express = __webpack_require__(196);
 
 var _express2 = _interopRequireDefault(_express);
 
+var _serveFavicon = __webpack_require__(205);
+
+var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
+
 var _compression = __webpack_require__(195);
 
 var _compression2 = _interopRequireDefault(_compression);
@@ -8462,11 +8466,12 @@ var _routers2 = _interopRequireDefault(_routers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = (0, _express2.default)(); /* eslint global-require: 0 */
-
+/* eslint global-require: 0 */
+var app = (0, _express2.default)();
 var log = new _log2.default();
 
 app.use((0, _compression2.default)());
+app.use((0, _serveFavicon2.default)(_path2.default.resolve(__dirname, '../favicon.ico')));
 app.use(_express2.default.static(_path2.default.resolve(__dirname, '../public')));
 (0, _routers2.default)(app);
 
@@ -8864,7 +8869,7 @@ function createRoutes() {
     return {
         path: 'article',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(8).then(__webpack_require__.bind(null, 206)).then(function (Article) {
+            __webpack_require__.e/* System.import */(8).then(__webpack_require__.bind(null, 207)).then(function (Article) {
                 cb(null, Article.default);
             });
         }
@@ -8993,7 +8998,7 @@ function createRoutes() {
     return {
         path: 'music',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(7).then(__webpack_require__.bind(null, 207)).then(function (Music) {
+            __webpack_require__.e/* System.import */(7).then(__webpack_require__.bind(null, 208)).then(function (Music) {
                 cb(null, Music.default);
             });
         }
@@ -9175,7 +9180,7 @@ function createRoutes() {
     return {
         path: 'video',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(6).then(__webpack_require__.bind(null, 208)).then(function (Video) {
+            __webpack_require__.e/* System.import */(6).then(__webpack_require__.bind(null, 209)).then(function (Video) {
                 cb(null, Video.default);
             });
         }
@@ -9201,7 +9206,7 @@ function createRoutes() {
     return {
         path: 'album',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(5).then(__webpack_require__.bind(null, 209)).then(function (Album) {
+            __webpack_require__.e/* System.import */(5).then(__webpack_require__.bind(null, 210)).then(function (Album) {
                 cb(null, Album.default);
             });
         }
@@ -9227,7 +9232,7 @@ function createRoutes() {
     return {
         path: 'artist',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(4).then(__webpack_require__.bind(null, 210)).then(function (Artist) {
+            __webpack_require__.e/* System.import */(4).then(__webpack_require__.bind(null, 211)).then(function (Artist) {
                 cb(null, Artist.default);
             });
         }
@@ -9249,7 +9254,7 @@ function createRoutes() {
     return {
         path: 'genre',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(3).then(__webpack_require__.bind(null, 211)).then(function (Genre) {
+            __webpack_require__.e/* System.import */(3).then(__webpack_require__.bind(null, 212)).then(function (Genre) {
                 cb(null, Genre.default);
             });
         }
@@ -9633,7 +9638,7 @@ function createRoutes() {
     return {
         path: 'login',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(2).then(__webpack_require__.bind(null, 212)).then(function (Login) {
+            __webpack_require__.e/* System.import */(2).then(__webpack_require__.bind(null, 213)).then(function (Login) {
                 cb(null, Login.default);
             });
         }
@@ -9659,7 +9664,7 @@ function createRoutes() {
     return {
         path: 'profile',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(1).then(__webpack_require__.bind(null, 213)).then(function (Profile) {
+            __webpack_require__.e/* System.import */(1).then(__webpack_require__.bind(null, 214)).then(function (Profile) {
                 cb(null, Profile.default);
             });
         }
@@ -9685,7 +9690,7 @@ function createRoutes() {
     return {
         path: 'register',
         getComponents: function getComponents(location, cb) {
-            __webpack_require__.e/* System.import */(0).then(__webpack_require__.bind(null, 214)).then(function (Register) {
+            __webpack_require__.e/* System.import */(0).then(__webpack_require__.bind(null, 215)).then(function (Register) {
                 cb(null, Register.default);
             });
         }
@@ -21536,6 +21541,12 @@ module.exports = require("redux-thunk");
 
 /***/ },
 /* 205 */
+/***/ function(module, exports) {
+
+module.exports = require("serve-favicon");
+
+/***/ },
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(81);
