@@ -5,19 +5,19 @@ import genre from './genre'
 import artist from './artist'
 import album from './album'
 
-export default function createRoutes() {
-    return {
-        path: 'music',
-        component: Root,
-        indexRoute: {
-            component: Home,
-        },
-        getChildRoutes(location, cb) {
-            cb(null, [
-                genre(),
-                artist(),
-                album(),
-            ])
-        },
-    }
+export default (store) => {
+  return {
+    path: 'music',
+    component: Root,
+    indexRoute: {
+      component: Home,
+    },
+    getChildRoutes(location, cb) {
+      cb(null, [
+        genre(store),
+        artist(store),
+        album(store),
+      ])
+    },
+  }
 }

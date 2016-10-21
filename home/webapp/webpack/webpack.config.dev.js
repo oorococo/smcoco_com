@@ -10,6 +10,8 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     index: [
+      'babel-polyfill',
+      'babel-runtime/regenerator',
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       `${src}/index.jsx`,
@@ -27,7 +29,7 @@ module.exports = {
     loaders: [{
       test: /\.(css|scss)$/,
       include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
-      loader: "style!css?-minimize&sourceMap?{browsers:['last 2 versions', 'ie 9']}!sass?sourceMap",
+      loader: 'style!css?sourceMap!sass?sourceMap',
     }, {
       test: /\.(js|jsx)$/,
       loader: 'babel',

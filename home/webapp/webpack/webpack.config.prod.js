@@ -26,7 +26,7 @@ module.exports = {
     loaders: [{
       test: /\.(css|scss)$/,
       include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
-      loader: ExtractTextPlugin.extract("css?&sourceMap?{browsers:['last 2 versions', 'ie 9']}!sass?sourceMap"),
+      loader: ExtractTextPlugin.extract('css!sass'),
     }, {
       test: /\.(js|jsx)$/,
       loader: 'babel',
@@ -35,11 +35,19 @@ module.exports = {
         presets: [['latest', { modules: false }], 'stage-0', 'react'],
       },
     }, {
-      test: /\.(png|jpg|jpeg|gif|eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
+      test: /\.(eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
       include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
       loader: 'url',
       query: {
-        name: '[hash].[ext]',
+        name: '[name]/img/[name].[ext]',
+        limit: 10000,
+      },
+    }, {
+      test: /\.(png|jpg|jpeg|gif)(\?[a-z0-9A-Z]*)?$/,
+      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
+      loader: 'url',
+      query: {
+        name: '[name]/fonts/[name].[ext]',
         limit: 10000,
       },
     }],

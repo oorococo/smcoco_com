@@ -12,7 +12,6 @@ import getRoutes from '../routes'
 import { configureStore } from '../store'
 
 const style = fs.readFileSync(path.resolve(__dirname, '../public/assets/index/css/index.css'))
-const script = fs.readFileSync(path.resolve(__dirname, '../public/assets/index/js/index.js'))
 
 export default (req, res) => {
   const state = {}
@@ -31,21 +30,22 @@ export default (req, res) => {
       )
       const finalState = store.getState()
       const html = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-                    <title></title>
-                    <style>${style}</style>
-                </head>
-                <body>
-                    <div id="root">${reactRoot}</div>
-                    <script>window.__INITIAL_STATE__ = ${JSON.stringify(finalState)}</script>
-                    <script src="${conf.ASSETS_BASE}/index/js/index.js"></script>
-                </body>
-                </html>
-            `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <title></title>
+          <style>${style}</style>
+        </head>
+        <body>
+          <div id="root">${reactRoot}</div>
+          <script>window.__INITIAL_STATE__ = ${JSON.stringify(finalState)}</script>
+          <script src="${conf.ASSETS_BASE}/index/js/index.js"></script>
+        </body>
+        </html>
+      `
       res.send(minify(html, {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
