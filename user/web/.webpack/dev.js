@@ -13,7 +13,7 @@ module.exports = {
     contentBase: dst,
   },
   entry: {
-    index: [`${src}/index.tsx`],
+    index: [`${src}/index.jsx`],
     indexHtml: [`${src}/index.html`],
   },
   output: {
@@ -33,7 +33,7 @@ module.exports = {
       include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
       loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap',
     }, {
-      test: /\.(js|jsx)$/,
+      test: /\.jsx?$/,
       loader: 'babel-loader',
       include: src,
     }, {

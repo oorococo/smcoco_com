@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "jsx": "react"
+  },
+  "files": [
+    "./src/index.tsx"
+  ]
+}
