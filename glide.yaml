@@ -1,0 +1,4 @@
+package: github.com/oorococo/smcoco_com
+import:
+- package: github.com/kataras/iris
+  version: v4

@@ -1,0 +1,112 @@
+hash: f868ff0a431b27b43c0df0a17ee300699608b30f960c6631500d34ba90c74b13
+updated: 2016-11-25T03:15:36.291191499+08:00
+imports:
+- name: github.com/fatih/structs
+  version: dc3312cb1a4513a366c4c9e622ad55c32df12ed3
+- name: github.com/google/go-github
+  version: d4f1b2d029be1730fd349ca929cc9c0da4a27007
+  subpackages:
+  - github
+- name: github.com/google/go-querystring
+  version: 9235644dd9e52eeae6fa48efd539fdc351a0af53
+  subpackages:
+  - query
+- name: github.com/gorilla/websocket
+  version: e8f0f8aaa98dfb6586cbdf2978d511e3199a960a
+- name: github.com/hashicorp/go-version
+  version: e96d3840402619007766590ecea8dd7af1292276
+- name: github.com/imdario/mergo
+  version: 50d4dbd4eb0e84778abe37cefef140271d96fade
+- name: github.com/iris-contrib/lego
+  version: 095d7f6459c501cb15319aa2754afa221b81a3ec
+  subpackages:
+  - acme
+- name: github.com/kataras/go-errors
+  version: 0f977b82cc78d5d31bb75fb6f903ad9e852c8bbd
+- name: github.com/kataras/iris
+  version: c1f22b9545617914995c0decc7f54f65336c12e4
+- name: github.com/klauspost/compress
+  version: e3b7981a12dd3cab49afa1d3a50e715846f23732
+  subpackages:
+  - flate
+  - gzip
+  - zlib
+- name: github.com/klauspost/cpuid
+  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+- name: github.com/klauspost/crc32
+  version: cb6bfca970f6908083f26f39a79009d608efd5cd
+- name: github.com/microcosm-cc/bluemonday
+  version: f77f16ffc87a6a58814e64ae72d55f9c41374e6d
+- name: github.com/miekg/dns
+  version: 271c58e0c14f552178ea321a545ff9af38930f39
+- name: github.com/russross/blackfriday
+  version: 5f33e7b7878355cd2b7e6b8eefc48a5472c69f70
+- name: github.com/shurcooL/sanitized_anchor_name
+  version: 1dba4b3954bc059efc3991ec364f9f9a35f597d2
+- name: github.com/square/go-jose
+  version: 50df5ca198e569d06795909c091ac0cea62e925a
+  subpackages:
+  - cipher
+  - json
+- name: github.com/valyala/bytebufferpool
+  version: e746df99fe4a3986f4d4f79e13c1e0117ce9c2f7
+- name: github.com/valyala/fasthttp
+  version: 1913bdea45d5d9515c6b9433683bfc8950402389
+  subpackages:
+  - fasthttpadaptor
+  - fasthttputil
+  - stackless
+- name: golang.org/x/crypto
+  version: ede567c8e044a5913dad1d1af3696d9da953104c
+  subpackages:
+  - acme
+  - acme/autocert
+  - ocsp
+- name: golang.org/x/net
+  version: 4971afdc2f162e82d185353533d3cf16188a9f4e
+  subpackages:
+  - context
+  - context/ctxhttp
+  - html
+  - html/atom
+  - publicsuffix
+- name: golang.org/x/time
+  version: f51c12702a4d776e4c1fa9b0fabab841babae631
+  subpackages:
+  - rate
+- name: gopkg.in/geekypanda/httpcache.v0
+  version: 76cace3b49b4d5d13592f13e4e7024d7107a4043
+- name: gopkg.in/iris-contrib/formBinder.v4
+  version: 39c8cd740c8f5a6831bec11c534a850e02c342a3
+- name: gopkg.in/iris-contrib/letsencrypt.v4
+  version: 1a3e5c619a13b307df3b1b4da7cb7e57d2e156dd
+- name: gopkg.in/iris-contrib/websocket.v4
+  version: 655e781f648acd8b35a698e949b972ad8d9cbf53
+- name: gopkg.in/kataras/go-errors.v0
+  version: d2aaffdebcb40c69c4cb6a95e436430cde192435
+- name: gopkg.in/kataras/go-fs.v0
+  version: ecf3587588f7218a21a991a1c0a9f4bdebd20cc1
+- name: gopkg.in/kataras/go-options.v0
+  version: 23b556c1b935c594ec6d71ff81ead4dbeec3aa8d
+- name: gopkg.in/kataras/go-serializer.v0
+  version: 58326973780f8eb63f576033dca215707a05a51a
+  subpackages:
+  - data
+  - json
+  - jsonp
+  - markdown
+  - text
+  - xml
+- name: gopkg.in/kataras/go-sessions.v0
+  version: d66895d7f2802f7109185621459ae26521ac6ecf
+- name: gopkg.in/kataras/go-template.v0
+  version: ad601fbfa7744aba4bfa592d781b2cc8f6db6539
+  subpackages:
+  - html
+- name: gopkg.in/kataras/go-websocket.v0
+  version: c77a562c4403defbb12a5a495be4d636691c0bf9
+- name: gopkg.in/kataras/iris.v4
+  version: c1f22b9545617914995c0decc7f54f65336c12e4
+  subpackages:
+  - utils
+testImports: []

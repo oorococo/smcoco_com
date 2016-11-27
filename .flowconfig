@@ -1,0 +1,21 @@
+[ignore]
+.*/node_modules/fbjs/.*
+.*/node_modules/config-chain/.*
+[include]
+[libs]
+.flow/decls
+[options]
+module.file_ext=.html
+module.file_ext=.css
+module.file_ext=.scss
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
+
+module.name_mapper.extension='html' -> '<PROJECT_ROOT>./.flow/Noop.js.flow'
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>./.flow/Noop.js.flow'
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable

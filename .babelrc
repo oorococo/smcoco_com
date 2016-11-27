@@ -1,0 +1,22 @@
+{
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
+  "plugins": [
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "typecheck",
+        "react-hot-loader/babel"
+      ]
+    }
+  }
+}
