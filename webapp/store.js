@@ -17,7 +17,7 @@ export const configureStore = (initialState = {}, history) => {
   const store = createStore(createReducer(), initialState,
     compose(
       applyMiddleware(thunk, routerMiddleware(history))
-    )
+    ),
   )
   store.asyncReducers = {}
   if (module.hot) {
