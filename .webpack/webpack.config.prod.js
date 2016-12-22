@@ -1,26 +1,25 @@
+// @flow
 const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 const src = path.resolve(__dirname, '../webapp')
-const dst = path.resolve(__dirname, '../build')
+const dst = path.resolve(__dirname, '../public/static')
 const lib = path.resolve(__dirname, '../node_modules')
 
 module.exports = {
   context: `${src}`,
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    port: 3000,
-    contentBase: dst,
-  },
+  devtool: '#source-map',
   entry: {
-    index: [`${src}/index.jsx`],
-    indexHtml: [`${src}/index.html`],
+    home: [`${src}/home/index.jsx`],
+    ttd2: [`${src}/ttd2/index.jsx`],
+    auth: [`${src}/auth/index.jsx`],
+    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css', 'basscss/css/basscss.min.css'],
   },
   output: {
     path: `${dst}/`,
-    publicPath: '/',
-    filename: '[name].js',
+    publicPath: '/public/static/',
+    filename: '[name]/[name].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
@@ -28,10 +27,17 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.html$/,
-      loader: 'file-loader?name=[name].[ext]!extract-loader!html-loader',
+      loaders: [
+        `file-loader?name=[path]/[name].[ext]`,
+        'extract-loader',
+        'html-loader?interpolate',
+        'string-replace-loader?search=__public_path__&replace=/public/static&flags=g',
+        'string-replace-loader?search=<!--&replace=&flags=g',
+        'string-replace-loader?search=-->&replace=&flags=g',
+      ],
     }, {
-      test: /\.(css|scss)$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
+      test: /\.s?css$/,
+      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`, `${lib}/basscss`],
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader?sourceMap!sass-loader?sourceMap',
@@ -41,19 +47,35 @@ module.exports = {
       loader: 'babel-loader',
       include: src,
     }, {
-      test: /\.tsx?$/,
-      loader: 'ts-loader',
-    }, {
-      test: /\.(png|jpg|jpeg|gif|eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
+      test: /\.(png|jpg|jpeg|gif|ico)(\?[a-z0-9A-Z]*)?$/,
+      include: [src],
       loader: 'url-loader',
       query: {
-        name: '[hash].[ext]',
-        limit: 10000,
+        name: 'img/[path]/[name].[ext]',
+        limit: 1000,
+      },
+    }, {
+      test: /\.(eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
+      include: [src, `${lib}/font-awesome`],
+      loader: 'url-loader',
+      query: {
+        name: 'fonts/[name].[ext]',
+        limit: 1000,
       },
     }],
   },
   plugins: [
-    new ExtractTextPlugin('style.css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common'],
+      filename: 'common/common.js',
+      minChunks: Infinity,
+    }),
+    new ExtractTextPlugin('[name]/[name].css'),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      sourceMap: true,
+    }),
   ],
 }

@@ -1,30 +1,24 @@
 // @flow
-
 const path = require('path')
 const webpack = require('webpack')
 
 const src = path.resolve(__dirname, '../webapp')
-const dst = path.resolve(__dirname, '../build')
 const lib = path.resolve(__dirname, '../node_modules')
+const MODULE_NAME = process.env.MODULE_NAME ? process.env.MODULE_NAME : 'home'
 
 module.exports = {
   context: `${src}`,
-  devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 3000,
-    contentBase: dst,
     historyApiFallback: true,
   },
   entry: {
-    index: [
-      'react-hot-loader/patch',
-      `${src}/index.jsx`,
-    ],
+    [MODULE_NAME]: ['react-hot-loader/patch', `${src}/${MODULE_NAME}/index.jsx`],
+    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css', 'basscss/css/basscss.min.css'],
   },
   output: {
-    path: `${dst}/`,
     publicPath: '/',
-    filename: '[name].js',
+    filename: '[name]/[name].js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss'],
@@ -32,10 +26,16 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.html$/,
-      loader: 'file-loader?name=[name].[ext]!extract-loader!html-loader?interpolate',
+      include: [src],
+      loaders: [
+        'file-loader?name=index.[ext]',
+        'extract-loader',
+        'raw-loader',
+        'string-replace-loader?search=__public_path__&replace=&flags=g',
+      ],
     }, {
-      test: /\.(css|scss)$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
+      test: /\.s?css$/,
+      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`, `${lib}/basscss`],
       loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap',
     }, {
       test: /\.jsx?$/,
@@ -55,5 +55,10 @@ module.exports = {
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common'],
+      filename: 'common/common.js',
+      minChunks: Infinity,
+    }),
   ],
 }
