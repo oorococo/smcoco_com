@@ -1,6 +1,9 @@
 development:
-  host: localhost
-  port: 8080
+  host: smcocodev.com
+  port: 443
+test:
+  host: smcocodev.com
+  port: 443
 production:
   host: smcoco.com
   port: 443
