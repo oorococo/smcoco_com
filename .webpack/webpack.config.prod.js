@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     path: `${dst}/`,
-    publicPath: 'https://static.smcoco.com',
+    publicPath: 'https://static.smcoco.com/',
     filename: '[name]/[name].js',
   },
   resolve: {
@@ -53,7 +53,7 @@ module.exports = {
       loader: 'url-loader',
       query: {
         name: 'img/[path]/[name].[ext]',
-        limit: 1000,
+        limit: 10000,
       },
     }, {
       test: /\.(eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
@@ -61,7 +61,7 @@ module.exports = {
       loader: 'url-loader',
       query: {
         name: 'fonts/[name].[ext]',
-        limit: 1000,
+        limit: 10000,
       },
     }],
   },
