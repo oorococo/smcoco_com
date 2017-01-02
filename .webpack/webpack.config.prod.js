@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     path: `${dst}/`,
-    publicPath: '/static/',
+    publicPath: 'https://static.smcoco.com',
     filename: '[name]/[name].js',
   },
   resolve: {
@@ -32,7 +32,7 @@ module.exports = {
         `file-loader?name=[path]/[name].[ext]`,
         'extract-loader',
         'html-loader?interpolate',
-        'string-replace-loader?search=__public_path__&replace=/static&flags=g',
+        'string-replace-loader?search=__public_path__&replace=https://static.smcoco.com&flags=g',
         'string-replace-loader?search=<!--&replace=&flags=g',
         'string-replace-loader?search=-->&replace=&flags=g',
       ],

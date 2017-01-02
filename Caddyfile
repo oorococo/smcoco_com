@@ -1,0 +1,20 @@
+static.smcoco.com {
+  root ./public/static
+  gzip
+}
+
+smcoco.com {
+  root ./public/static/home
+  gzip
+}
+
+auth.smcoco.com {
+  root ./public/static/home
+  gzip
+}
+
+ttd2.smcoco.com {
+  root ./public/static/ttd2
+  gzip
+}
+
