@@ -24,6 +24,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss'],
   },
+  performance: {
+    hints: false
+  },
   module: {
     loaders: [{
       test: /\.html$/,
