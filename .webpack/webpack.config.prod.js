@@ -6,6 +6,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const src = path.resolve(__dirname, '../webapp')
 const dst = path.resolve(__dirname, '../public/static')
 const lib = path.resolve(__dirname, '../node_modules')
+const commonLibs = [src, path.resolve(lib, 'normalize.css'), path.resolve(lib, 'font-awesome')]
 
 module.exports = {
   context: `${src}`,
@@ -14,7 +15,7 @@ module.exports = {
     home: [`${src}/home/index.jsx`],
     ttd2: [`${src}/ttd2/index.jsx`],
     auth: [`${src}/auth/index.jsx`],
-    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css', 'basscss/css/basscss.min.css'],
+    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css'],
   },
   output: {
     path: `${dst}/`,
@@ -37,7 +38,7 @@ module.exports = {
       ],
     }, {
       test: /\.s?css$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`, `${lib}/basscss`],
+      include: commonLibs,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
         loader: 'css-loader?sourceMap!sass-loader?sourceMap',
@@ -56,7 +57,7 @@ module.exports = {
       },
     }, {
       test: /\.(eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
-      include: [src, `${lib}/font-awesome`],
+      include: commonLibs,
       loader: 'url-loader',
       query: {
         name: 'fonts/[name].[ext]',
