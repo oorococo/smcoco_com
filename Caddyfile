@@ -1,6 +1,7 @@
 static.smcoco.com {
   root ./public/static
   gzip
+  cors
 }
 
 smcoco.com {
