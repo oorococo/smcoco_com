@@ -4,6 +4,7 @@ const webpack = require('webpack')
 
 const src = path.resolve(__dirname, '../webapp')
 const lib = path.resolve(__dirname, '../node_modules')
+const commonLibs = [src, path.resolve(lib, 'normalize.css'), path.resolve(lib, 'font-awesome')]
 const MODULE_NAME = process.env.MODULE_NAME ? process.env.MODULE_NAME : 'home'
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
   },
   entry: {
     [MODULE_NAME]: ['react-hot-loader/patch', `${src}/${MODULE_NAME}/index.jsx`],
-    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css', 'basscss/css/basscss.min.css'],
+    common: ['react', 'react-router', 'redux', 'react-redux', 'normalize.css', 'font-awesome/css/font-awesome.css'],
   },
   output: {
     publicPath: '/',
@@ -35,7 +36,7 @@ module.exports = {
       ],
     }, {
       test: /\.s?css$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`, `${lib}/basscss`],
+      include: commonLibs,
       loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap',
     }, {
       test: /\.jsx?$/,
@@ -46,7 +47,7 @@ module.exports = {
       },
     }, {
       test: /\.(ico|png|jpg|jpeg|gif|eot|ttf|svg|woff|woff2)(\?[a-z0-9A-Z]*)?$/,
-      include: [src, `${lib}/normalize.css`, `${lib}/font-awesome`],
+      include: commonLibs,
       loader: 'url-loader',
       query: {
         name: '[name].[ext]',

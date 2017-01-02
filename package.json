@@ -1,0 +1,80 @@
+{
+  "name": "smcoco_com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/oorococo/smcoco_com.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "bnr start",
+    "build:app": "bnr build:app",
+    "build:web": "bnr build:web",
+    "flow": "flow",
+    "js-beautify": "js-beautify src/index.jsx"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "webpack-dev-server --config .webpack/webpack.config.dev.js -d --hot --inline",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "build:app": {
+      "command": "GOOS=linux GOARCH=amd64 go build",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:web": {
+      "command": "webpack --config .webpack/webpack.config.prod.js -p",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
+  "dependencies": {
+    "axios": "^0.15.3",
+    "font-awesome": "^4.7.0",
+    "html-minify": "^0.3.2",
+    "immutable": "^3.8.1",
+    "normalize.css": "^5.0.0",
+    "react": "^15.4.1",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-hot-loader": "3.0.0-beta.6",
+    "react-redux": "^5.0.1",
+    "react-router": "4.0.0-alpha.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-typecheck": "^3.9.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "better-npm-run": "^0.0.13",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-flowtype": "^2.29.2",
+    "eslint-plugin-flowtype-errors": "^2.0.3",
+    "eslint-plugin-import": "2.1.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.6.0",
+    "extract-loader": "^0.1.0",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "file-loader": "^0.9.0",
+    "flow-bin": "^0.37.4",
+    "js-beautify": "^1.6.7",
+    "node-sass": "^4.1.1",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^4.1.1",
+    "string-replace-loader": "^1.0.5",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "2.2.0-rc.3",
+    "webpack-dev-server": "2.2.0-rc.0"
+  }
+}
