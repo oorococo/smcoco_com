@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "plugins": [
+    "compat",
     "flowtype",
     "flowtype-errors"
   ],

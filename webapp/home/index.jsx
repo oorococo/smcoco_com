@@ -4,7 +4,6 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import './index.html'
-import './favicon.ico'
 import './styles/index.scss'
 
 import App from './containers/App'

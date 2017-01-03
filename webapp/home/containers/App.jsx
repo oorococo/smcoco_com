@@ -6,25 +6,17 @@ import Home from '../routes/home'
 import About from '../routes/about'
 import Topics from '../routes/topics'
 
-function test(s: string): string {
-  return s
-}
-
-const NoMatch = ({ location }: { location: any }) => (
+const NoMatch = () => (
   <div>
-    <h2>Whoops</h2>
-    <p>Sorry but {location.pathname}didn’t match any pages</p>
+    <h2>  火星基地尚未开发！</h2>
   </div>
 )
 
 const App = () => (
   <BrowserRouter>
     <div>
-      {test('你好!ddd')}
-      {test('44')}
-      <div>sdfs</div>
       <ul>
-        <li><Link to="/"><i className="fa fa-user" />Home</Link></li>
+        <li><Link to="/"><i className="fa fa-user" />首页</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/topics">Topics</Link></li>
       </ul>
