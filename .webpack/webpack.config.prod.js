@@ -7,7 +7,7 @@ const src = path.resolve(__dirname, '../webapp')
 const dst = path.resolve(__dirname, '../public/static')
 const lib = path.resolve(__dirname, '../node_modules')
 const commonLibs = [src, path.resolve(lib, 'normalize.css'), path.resolve(lib, 'font-awesome')]
-const publicPath = '//smcoco.oss-cn-hangzhou.aliyuncs.com'
+const publicPath = '//static.smcoco.com'
 
 module.exports = {
   context: `${src}`,

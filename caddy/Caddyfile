@@ -1,3 +1,8 @@
+static.smcoco.com {
+  root ./public/static
+  gzip
+}
+
 smcoco.com {
   gzip
   root ./public/static/home
