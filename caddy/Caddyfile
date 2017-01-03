@@ -5,7 +5,9 @@ smcoco.com {
     regexp .*
     to ./public/static/home/index.html
   }
-  404 ./public/static/home/index.html
+  errors {
+    404 ./public/static/home/index.html
+  }
 }
 
 auth.smcoco.com {
@@ -15,7 +17,9 @@ auth.smcoco.com {
     regexp .*
     to ./public/static/auth/index.html
   }
-  404 ./public/static/auth/index.html
+  errors {
+    404 ./public/static/auth/index.html
+  }
 }
 
 music.smcoco.com {
@@ -25,7 +29,9 @@ music.smcoco.com {
     regexp .*
     to ./public/static/music/index.html
   }
-  404 ./public/static/music/index.html
+  errors {
+    404 ./public/static/music/index.html
+  }
 }
 
 api.smcoco.com {
