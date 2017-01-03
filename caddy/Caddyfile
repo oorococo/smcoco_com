@@ -1,0 +1,34 @@
+smcoco.com {
+  gzip
+  root ./public/static/home
+  rewrite / {
+    regexp .*
+    to ./public/static/home/index.html
+  }
+  404 ./public/static/home/index.html
+}
+
+auth.smcoco.com {
+  gzip
+  root ./public/static/auth
+    rewrite / {
+    regexp .*
+    to ./public/static/auth/index.html
+  }
+  404 ./public/static/auth/index.html
+}
+
+music.smcoco.com {
+  gzip
+  root ./public/static/music
+    rewrite / {
+    regexp .*
+    to ./public/static/music/index.html
+  }
+  404 ./public/static/music/index.html
+}
+
+api.smcoco.com {
+  gzip
+  proxy / localhost:9999
+}

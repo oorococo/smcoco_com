@@ -1,13 +1,39 @@
 package main
 
-import (
-	"log"
-	"net/http"
-)
+import "github.com/kataras/iris"
 
 func main() {
-	PORT := ":80"
-	log.Print("Running server on " + PORT)
-	http.Handle("/static/", http.FileServer(http.Dir("public")))
-	log.Fatal(http.ListenAndServe(PORT, nil))
+	admin := iris.Party("/admin",
+		func(ctx *iris.Context) {
+			ctx.Write("Middleware for all party's routes!")
+			ctx.Next()
+		})
+	{
+		// add a silly middleware
+		admin.UseFunc(func(c *iris.Context) {
+			//your authentication logic here...
+			println("from ", c.PathString())
+			authorized := true
+			if authorized {
+				c.Next()
+			} else {
+				c.Text(401, c.PathString()+" is not authorized for you")
+			}
+
+		})
+		admin.Get("/", func(c *iris.Context) {
+			c.Write("from /admin/ or /admin if you pathcorrection on")
+		})
+		admin.Get("/dashboard", func(c *iris.Context) {
+			c.Write("/admin/dashboard")
+		})
+		admin.Delete("/delete/:userId", func(c *iris.Context) {
+			c.Write("admin/delete/%s", c.Param("userId"))
+		})
+	}
+
+	beta := admin.Party("/beta")
+	beta.Get("/hey", func(c *iris.Context) { c.Write("hey from /admin/beta/hey") })
+
+	iris.Listen(":9999")
 }

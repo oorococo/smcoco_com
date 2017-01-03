@@ -9,7 +9,10 @@
     "build:app": "bnr build:app",
     "build:web": "bnr build:web",
     "flow": "flow",
-    "js-beautify": "js-beautify src/index.jsx"
+    "js-beautify": "js-beautify src/index.jsx",
+    "render": "babel-node --presets latest,stage-0,react webapp/main.js",
+    "caddy": "caddy -conf caddy/Caddyfile",
+    "caddy:dev": "caddy -conf caddy/CaddyfileDev"
   },
   "betterScripts": {
     "start": {
@@ -32,7 +35,9 @@
     }
   },
   "dependencies": {
+    "ali-oss": "^4.6.3",
     "axios": "^0.15.3",
+    "express": "^4.14.0",
     "font-awesome": "^4.7.0",
     "html-minify": "^0.3.2",
     "immutable": "^3.8.1",
@@ -44,7 +49,8 @@
     "react-redux": "^5.0.1",
     "react-router": "4.0.0-alpha.6",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
