@@ -2,9 +2,6 @@ static.smcoco.com {
   root ./public/static
   cors
   gzip
-  git github.com/oorococo/smcoco_com {
-    path  ../
-  }
 }
 
 smcoco.com {
