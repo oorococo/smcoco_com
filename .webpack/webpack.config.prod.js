@@ -7,6 +7,7 @@ const src = path.resolve(__dirname, '../webapp')
 const dst = path.resolve(__dirname, '../public/static')
 const lib = path.resolve(__dirname, '../node_modules')
 const commonLibs = [src, path.resolve(lib, 'normalize.css'), path.resolve(lib, 'font-awesome')]
+const publicPath = '//smcoco.oss-cn-hangzhou.aliyuncs.com'
 
 module.exports = {
   context: `${src}`,
@@ -19,7 +20,7 @@ module.exports = {
   },
   output: {
     path: `${dst}/`,
-    publicPath: 'https://static.smcoco.com/',
+    publicPath: `${publicPath}/`,
     filename: '[name]/[name].js',
   },
   resolve: {
@@ -32,7 +33,7 @@ module.exports = {
         `file-loader?name=[path]/[name].[ext]`,
         'extract-loader',
         'html-loader?interpolate',
-        'string-replace-loader?search=__public_path__&replace=https://static.smcoco.com&flags=g',
+        `string-replace-loader?search=__public_path__&replace=${publicPath}&flags=g`,
         'string-replace-loader?search=<!--&replace=&flags=g',
         'string-replace-loader?search=-->&replace=&flags=g',
       ],
