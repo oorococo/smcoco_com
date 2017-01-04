@@ -9,7 +9,7 @@ smcoco.com {
   root ./public/static/home
   header / {
     Link "<//static.smcoco.com/common/common.css>; rel=preload;"
-    Link <//static.smcoco.com/home/home.css>; rel=preload;"
+    Link "<//static.smcoco.com/home/home.css>; rel=preload;"
     Link "<//static.smcoco.com/common/common.js>; rel=preload;"
     Link "<//static.smcoco.com/home/home.js>; rel=preload;"
     -Server
