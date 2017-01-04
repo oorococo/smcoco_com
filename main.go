@@ -4,29 +4,42 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"time"
-
-	"golang.org/x/net/html"
-	"golang.org/x/net/http2"
 )
 
+const indexHTML = `<html>
+<head>
+	<title>Hello</title>
+	<link rel="stylesheet" href="/static/common/common.css" />
+    <link rel="stylesheet" href="/static/home/home.css" />
+</head>
+<body>
+<div id="root"></div>
+</body>
+    <script src="/static/common/common.js"></script>
+    <script src="/static/home/home.js"></script>
+</html>
+`
+
 func main() {
-	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
 
-		w.Header().Add("Link", "<https://static.smcoco.com/auth/auth.css>; rel=preload;")
+	http.Handle("/static/", http.FileServer(http.Dir("public")))
 
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.NotFound(w, r)
+			return
+		}
+		pusher, ok := w.(http.Pusher)
+		if ok { // Push is supported. Try pushing rather than waiting for the browser.
+			pusher.Push("/static/common/common.css", nil)
+			pusher.Push("/static/home/home.css", nil)
+			pusher.Push("/static/common/common.js", nil)
+			pusher.Push("/static/home/home.js", nil)
+		}
+		fmt.Fprintf(w, indexHTML)
 	})
 
-	s := &http.Server{
-		Addr:           ":3003",
-		Handler:        nil,
-		ReadTimeout:    30 * time.Second,
-		WriteTimeout:   30 * time.Second,
-		MaxHeaderBytes: 1 << 20,
-	}
-	http2.ConfigureServer(s, nil)
-
-	log.Fatal(s.ListenAndServe())
-
+	log.Printf("About to listen on 10443. Go to https://127.0.0.1:10443/")
+	err := http.ListenAndServeTLS(":10443", "cert.pem", "key.pem", nil)
+	log.Fatal(err)
 }
