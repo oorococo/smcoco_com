@@ -29,6 +29,8 @@ func main() {
 			http.NotFound(w, r)
 			return
 		}
+		fmt.Fprintf(w, indexHTML)
+
 		pusher, ok := w.(http.Pusher)
 		if ok { // Push is supported. Try pushing rather than waiting for the browser.
 			pusher.Push("/static/common/common.css", nil)
@@ -36,7 +38,6 @@ func main() {
 			pusher.Push("/static/common/common.js", nil)
 			pusher.Push("/static/home/home.js", nil)
 		}
-		fmt.Fprintf(w, indexHTML)
 	})
 
 	log.Printf("About to listen on 10443. Go to https://127.0.0.1:10443/")
