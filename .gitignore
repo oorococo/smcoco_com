@@ -8,5 +8,6 @@ node_modules/
 *.zip
 .tern-port
 npm-debug.log
+npm-debug.log.*
 .vscode/
 *.7z
