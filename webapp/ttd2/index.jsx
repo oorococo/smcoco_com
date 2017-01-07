@@ -1,17 +1,13 @@
-// @flow
-import React from 'react'
-import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
-
-import './index.html'
-import './favicon.ico'
-import './styles/index.scss'
-
+import boot from '../common/boot'
 import App from './containers/App'
+import './index.html'
 
 const root = document.getElementById('root')
 
-render(<AppContainer><App /></AppContainer>, root)
+boot(root, App)
+
 if (module.hot) {
-  module.hot.accept('./containers/App', () => { render(<AppContainer><App /></AppContainer>, root) })
+  module.hot.accept('./containers/App', () => {
+    boot(root, App)
+  })
 }

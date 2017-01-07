@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { BrowserRouter, Match, Miss, Link } from 'react-router'
 /* eslint import/no-unresolved: 0, import/no-extraneous-dependencies: 0, import/extensions: 0 */
-import NoMatch from 'common/components/PageNotFound'
+import NoMatch from '../../common/components/PageNotFound'
 
 import Home from '../routes/home'
 import About from '../routes/about'
@@ -10,7 +10,7 @@ import Topics from '../routes/topics'
 class App extends PureComponent {
   render = () => (
     /* eslint no-undef: 0 */
-    <BrowserRouter basename={baseBrowserUrl}>
+    <BrowserRouter>
       <div>
         <ul>
           <li><Link to="/"><i className="fa fa-user" /></Link></li>
@@ -22,7 +22,7 @@ class App extends PureComponent {
         <Match pattern="/topics" component={Topics} />
         <Miss component={NoMatch} />
       </div>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }
 

@@ -1,38 +1,29 @@
-// @flow
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { BrowserRouter, Match, Miss, Link } from 'react-router'
+/* eslint import/no-unresolved: 0, import/no-extraneous-dependencies: 0, import/extensions: 0 */
+import NoMatch from '../../common/components/PageNotFound'
 
 import Home from '../routes/home'
 import About from '../routes/about'
 import Topics from '../routes/topics'
 
-function test(s: string): string {
-  return s
+class App extends PureComponent {
+  render = () => (
+    /* eslint no-undef: 0 */
+    <BrowserRouter>
+      <div>
+        <ul>
+          <li><Link to="/"><i className="fa fa-user" /></Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
+        </ul>
+        <Match exactly pattern="/" component={Home} />
+        <Match pattern="/about" component={About} />
+        <Match pattern="/topics" component={Topics} />
+        <Miss component={NoMatch} />
+      </div>
+    </BrowserRouter >
+  )
 }
-
-const NoMatch = ({ location }: { location: any }) => (
-  <div>
-    <h2>Whoops</h2>
-    <p>Sorry but {location.pathname} didn’t match any pages</p>
-  </div>
-)
-
-const App = () => (
-  <BrowserRouter>
-    <div>
-      {test('你好!')}
-      <div>天天大贰官网</div>
-      <ul>
-        <li><Link to="/"><i className="fa fa-user" />Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
-      </ul>
-      <Match exactly pattern="/" component={Home} />
-      <Match pattern="/about" component={About} />
-      <Match pattern="/topics" component={Topics} />
-      <Miss component={NoMatch} />
-    </div>
-  </BrowserRouter>
-)
 
 export default App
